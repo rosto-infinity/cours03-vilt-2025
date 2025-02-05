@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\NiveauScolaireController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -19,7 +20,9 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/niveau-scolaire',[NiveauScolaireController::class, 'index'] )->middleware(['auth', 'verified'])->name('niveau-scolaire');
+Route::get('/niveau-scolaire',[NiveauScolaireController::class, 'index'] )->middleware(['auth', 'verified'])->name('niveau-scolaire.index');
+
+Route::get('/etudiant',[EtudiantController::class, 'index'] )->middleware(['auth', 'verified'])->name('etudiant.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
