@@ -16,10 +16,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(NiveauScolaireSeeder::class);
         Etudiant::factory(20)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        
+        // User::factory(10)->create();
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
     }
 }

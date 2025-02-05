@@ -10,7 +10,7 @@ class Etudiant extends Model
     use HasFactory;
     protected $fillable =["nom", "prenom", "sexe","age","niveau_scolaire_id"];
     
-    public function etudiants(){
+    public function NiveauScolaire(){
         return $this->belongsTo(NiveauScolaire::class);
     }
 }

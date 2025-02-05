@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\NiveauScolaire;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,12 +18,11 @@ class EtudiantFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'nom' => $this->faker->name(),
             'prenom' => $this->faker->firstName(),
             'sexe' => $this->faker->randomElement(['M', 'F']),
-            'age' => $this->faker->numberBetween(6, 18),
-            'niveau_scolaire_id' => $this->faker->numberBetween(1, 4)
-
+            'age' => $this->faker->numberBetween(10, 25),
+            'niveau_scolaire_id' =>  rand(1,4)
         ];
     }
 }

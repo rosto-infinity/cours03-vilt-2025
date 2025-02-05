@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('prenom');
             $table->char('sexe');
             $table->integer('age');
-            $table->foreignId('niveau_scolaire_id')->constrained();
             $table->string('photo')->nullable();
+            $table->foreignId('niveau_scolaire_id')
+                 ->constrained()
+                 ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,9 +30,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::table( function (Blueprint $table) {
-        //     $table->dropConstrainedForeignId('niveau_scolaire_id');
-        // });
+        Schema::table('etudiants', function (Blueprint $table) {
+            $table->dropForeign(['niveau_scolaire_id']);
+            $table->dropColumn('niveau_scolaire_id');
+        });
         Schema::dropIfExists('etudiants');
     }
 };
