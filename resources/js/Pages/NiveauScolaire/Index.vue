@@ -1,7 +1,4 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
-</script>
+
 
 <template>
     <Head title="Niveau scolaire" />
@@ -40,11 +37,11 @@ import { Head } from '@inertiajs/vue3';
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr v-for="NiveauScolaire in props.NiveauScolaires">
           <td
             class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
           >
-            <h5 class="font-medium text-black dark:text-white">Free Package</h5>
+            <h5 class="font-medium text-black dark:text-white">{{ NiveauScolaire.nom }}</h5>
            
           </td>
           
@@ -78,3 +75,11 @@ import { Head } from '@inertiajs/vue3';
         </div>
     </AuthenticatedLayout>
 </template>
+<script setup>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Head } from '@inertiajs/vue3';
+
+const props =defineProps({
+    NiveauScolaires : Array
+})
+</script>
