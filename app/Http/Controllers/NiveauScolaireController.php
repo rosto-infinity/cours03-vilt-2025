@@ -9,11 +9,11 @@ use App\Models\NiveauScolaire;
 class NiveauScolaireController extends Controller
 {
    public function index(){
-    $NiveauScolaires =NiveauScolaire::orderBy("nom", "ASC")->get();
-
-        return Inertia::render('NiveauScolaire/Index', [
-            'NiveauScolaires' =>$NiveauScolaires
-        ]);
+    $niveauScolaires =NiveauScolaire::orderBy("nom", "ASC")->paginate(2);
   
+        return Inertia::render('NiveauScolaire/Index', [
+            'niveauScolaires' =>$niveauScolaires
+        ]);
+
 }
 }
