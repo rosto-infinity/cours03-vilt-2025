@@ -9,7 +9,7 @@ use App\Models\NiveauScolaire;
 class NiveauScolaireController extends Controller
 {
    public function index(){
-    $niveauScolaires =NiveauScolaire::orderBy("nom", direction: "ASC")->paginate(2);
+    $niveauScolaires =NiveauScolaire::orderBy("nom", direction: "ASC")->paginate(4);
   
         return Inertia::render('NiveauScolaire/Index', [
             'niveauScolaires' =>$niveauScolaires
