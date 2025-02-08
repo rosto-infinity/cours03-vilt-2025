@@ -67,9 +67,9 @@ const props = defineProps({
 })
 
 const computedLinks = computed(() => {
-  const array1 = props.links.shift();
-  const array2 = array1.links.pop();
-  return array2;
+   props.links.shift();
+   props.links.pop();
+  return props.links;
 })
  </script>
  
