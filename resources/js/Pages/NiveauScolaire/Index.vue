@@ -22,9 +22,12 @@
                 <tr class="bg-gray-2 text-left dark:bg-meta-4">
                     <th
                         class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
-                        Niveu scolaire
+                        Nivaeu scolaire
                     </th>
 
+                    <th class="px-4 py-4 font-medium text-black dark:text-white">
+                       Date
+                    </th>
                     <th class="px-4 py-4 font-medium text-black dark:text-white">
                         Actions
                     </th>
@@ -35,6 +38,13 @@
                     <td
                         class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                         <h5 class="font-medium text-black dark:text-white">{{ niveauScolaire.nom
+                            }}</h5>
+
+                    </td>
+                    <td
+                        class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
+                        <h5 class="font-medium text-black dark:text-white">
+                            {{ formatDate(niveauScolaire.created_at)
                             }}</h5>
 
                     </td>
@@ -98,4 +108,15 @@ const props = defineProps({
         required: true
     }
 })
+
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: 'numeric'
+    };
+    return date.toLocaleDateString('fr-FR', options);
+}
 </script>
