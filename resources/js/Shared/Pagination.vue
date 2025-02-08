@@ -34,7 +34,7 @@
                         class="bg-white border border-gray-300 text-gray-500 hover:bg-gray-100 hover:text-gray-700 ml-0 rounded-l-lg leading-tight py-2 px-3 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</Link>
                 </li>
                 
-                <li v-for="link in props.links.shift().pop()">
+                <li v-for="link in computedLinks">
                     <Link 
                     :href="link.url"
                         class="bg-white border border-gray-300 text-gray-500 hover:bg-gray-100 hover:text-gray-700 leading-tight py-2 px-3 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -49,11 +49,27 @@
  </template>
  
  <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
   links: {
     type: Array,
     required: true
+  },
+  prev: {
+    type: String,
+      default: ""
+    },
+  next: {
+    type: String,
+      default: ""
     }
-  })
+})
+
+const computedLinks = computed(() => {
+  const array1 = props.links.shift();
+  const array2 = array1.links.pop();
+  return array2;
+})
  </script>
  
