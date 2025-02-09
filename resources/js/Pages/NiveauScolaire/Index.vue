@@ -83,6 +83,17 @@
                                 :prev="props.niveauScolaires.prev_page_url"
                                 :next="props.niveauScolaires.next_page_url" />
                         </div>
+                        <div>
+                            <AppPaginator
+                            :links="niveauScolaires.links"
+                            :from="niveauScolaires.from || 0"
+                            :to="niveauScolaires.to || 0"
+                            :total="niveauScolaires.total || 0"
+                            class="mt-4 justify-center"
+                            >
+
+                            </AppPaginator>
+                        </div>
                     </td>
                 </tr>
 
@@ -99,6 +110,7 @@
 </template>
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import AppPaginator from '@/Shared/AppPaginator.vue';
 import Pagination from '@/Shared/Pagination.vue';
 import { Head } from '@inertiajs/vue3';
 
