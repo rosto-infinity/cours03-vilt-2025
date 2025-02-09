@@ -5,7 +5,7 @@
     <AuthenticatedLayout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                Niveau scolaire
+                Liste de tous les niveau Scolaire 
             </h2>
 
         </template>
@@ -19,6 +19,14 @@
     <div class="max-w-full ">
         <table class="w-full table-auto">
             <thead>
+                <tr>
+                    <th> 
+                        <CreateNiveauScolaire />
+                      
+                    </th>
+                    <th>02</th>
+                    <th>03</th>
+                </tr>
                 <tr class="bg-gray-2 text-left dark:bg-meta-4">
                     <th
                         class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
@@ -111,8 +119,9 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import AppPaginator from '@/Shared/AppPaginator.vue';
-import Pagination from '@/Shared/Pagination.vue';
+
 import { Head } from '@inertiajs/vue3';
+import CreateNiveauScolaire from './CreateNiveauScolaire.vue';
 
 const props = defineProps({
     niveauScolaires: {
