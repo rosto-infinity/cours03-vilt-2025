@@ -1,8 +1,8 @@
 <template>
-    <div class="flex justify-between">
+    <div class="md:flex md:justify-between   justify-center items-center">
         <div class="pt-5">
-            Showing {{ from }} to {{ to }} of
-            <span class="font-bold">{{ total }}</span> results
+            Affichage des résultats   {{ from }} à {{ to }} sur
+            <span class="font-bold">{{ total }}</span>  
         </div>
         <div v-if="links.length > 3">
             <div class="flex flex-wrap" :class="$attrs.class">

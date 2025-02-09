@@ -77,12 +77,12 @@
                 </tr>
                 <tr>
 
-                    <td>
-                        <div>
+                    <td colspan="3">
+                        <!-- <div>
                             <Pagination :links="props.niveauScolaires.links" 
                                 :prev="props.niveauScolaires.prev_page_url"
                                 :next="props.niveauScolaires.next_page_url" />
-                        </div>
+                        </div> -->
                         <div>
                             <AppPaginator
                             :links="niveauScolaires.links"
