@@ -18,8 +18,8 @@
                                         <th>
                                             <CreateNiveauScolaire />
                                         </th>
-                                        <th>Date</th>
-                                        <th>Actions</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                     <tr class="bg-gray-2 text-left dark:bg-meta-4">
                                         <th class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
@@ -34,7 +34,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="niveauScolaire in props.niveauScolaires.data" :key="niveauScolaire.id">
+                                    <tr v-for="niveauScolaire in props.niveauScolaires.data" :key="niveauScolaire.id" >
                                         <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                             <h5 class="font-medium text-black dark:text-white">{{ niveauScolaire.nom }}</h5>
                                         </td>
