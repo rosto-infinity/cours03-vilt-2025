@@ -3,7 +3,7 @@
   <AuthenticatedLayout>
       <template #header>
           <h2 class="text-xl font-semibold leading-tight text-gray-800">
-              Liste de tous les niveaux scolaires
+              Liste de tous les Etudiants
           </h2>
       </template>
 
@@ -16,7 +16,8 @@
                               <thead>
                                   <tr>
                                       <th>
-                                          <!-- <Createetudiant/> -->
+                                        <PrimaryButton @click="createNiveauScolaire" class="bg-green-500" >+ 👉 Nouveau</PrimaryButton>
+
                                       </th>
                                       <th></th>
                                       <th></th>
@@ -90,6 +91,7 @@ import EditEtudiant from './EditEtudiant.vue';
 
 import AppPaginator from '@/Shared/AppPaginator.vue';
 import DeleteEtudiant from './DeleteEtudiant.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 
 const props = defineProps({
