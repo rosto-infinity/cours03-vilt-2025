@@ -77,7 +77,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import AppPaginator from '@/Shared/AppPaginator.vue';
 import CreateNiveauScolaire from './CreateNiveauScolaire.vue';
-import EditeNiveauScolaire from './EditeNiveauScolaire.vue';
+import EditeNiveauScolaire from './EditNiveauScolaire.vue';
 import DeleteNiveauScolaire from './DeleteNiveauScolaire.vue';
 
 const props = defineProps({

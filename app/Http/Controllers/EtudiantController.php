@@ -11,7 +11,7 @@ class EtudiantController extends Controller
     
    public function index(){
 
-    $etudiants =Etudiant::latest()->paginate(3);
+    $etudiants =Etudiant::with("niveau_scolaire")->latest()->paginate(3);
   
         return Inertia::render('Etudiant/IndexEtudiant', [
             'etudiants' =>$etudiants

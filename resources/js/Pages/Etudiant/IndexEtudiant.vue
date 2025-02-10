@@ -45,7 +45,7 @@
                                       </td>
                                       <td class="border-b border-[#050404] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                           <h5 class="font-medium text-black dark:text-white">
-                                            {{ etudiant.niveau_scolaire_id.nom }} 
+                                            {{ etudiant.niveau_scolaire.nom }} 
                                         </h5>
                                       </td>
                                       <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
