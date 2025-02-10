@@ -9,7 +9,8 @@ use App\Models\NiveauScolaire;
 class NiveauScolaireController extends Controller
 {
    public function index(){
-    $niveauScolaires =NiveauScolaire::orderBy("nom", direction: "ASC")->paginate(2);
+    // $niveauScolaires =NiveauScolaire::orderBy("nom", direction: "ASC")->paginate(2);
+    $niveauScolaires =NiveauScolaire::latest()->paginate(3);
   
         return Inertia::render('NiveauScolaire/IndexNiveauScolaire', [
             'niveauScolaires' =>$niveauScolaires
@@ -19,8 +20,10 @@ class NiveauScolaireController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(["nom" => "requered"]);
+        $request->validate(["nom" => "required"]);
         
         NiveauScolaire::create(["nom" => $request->nom]);
+
+        return redirect()->back();
     }
 }

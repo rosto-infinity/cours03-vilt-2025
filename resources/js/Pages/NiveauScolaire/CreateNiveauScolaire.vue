@@ -25,12 +25,13 @@ const submitForm = () => {
     form.post(route('niveauScolaire.store'), {
         preserveScroll: true,
         onSuccess: () => closeModal(),
-        onError: () => {
-            if (form.errors.password) {
-                form.reset('nom');
-                nomInput.value.focus();
-            }
-        },
+        // onError: () => {
+        //     if (form.errors.password) {
+        //         form.reset('nom');
+        //         nomInput.value.focus();
+        //     }
+        // },
+        onError: () => passwordInput.value.focus(),
         onFinish: () => form.reset(),
     });
 };
