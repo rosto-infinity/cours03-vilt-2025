@@ -10,7 +10,7 @@ class EtudiantController extends Controller
     
    public function index(){
 
-    return Inertia::render('Etudiant/Index');
+    return Inertia::render('Etudiant/IndexEtudiant');
 
 }
 }
