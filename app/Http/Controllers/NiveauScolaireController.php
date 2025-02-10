@@ -16,4 +16,11 @@ class NiveauScolaireController extends Controller
         ]);
 
 }
+
+    public function store(Request $request)
+    {
+        $request->validate(["nom" => "requered"]);
+        
+        NiveauScolaire::create(["nom" => $request->nom]);
+    }
 }
