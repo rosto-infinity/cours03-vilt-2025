@@ -1,137 +1,103 @@
-<template>
-
-    <Head title="Niveau scolaire" />
-
-    <AuthenticatedLayout>
-        <template #header>
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                Liste de tous les niveau Scolaire 
-            </h2>
-
-        </template>
-
-        <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
-                        <div
-                            class="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-    <div class="max-w-full ">
-        <table class="w-full table-auto">
-            <thead>
-                <tr class="bg-gray-2 text-left dark:bg-meta-4">
-                    <th
-                        class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
-                        Nivaeu scolaire
-                    </th>
-
-                    <th class="px-4 py-4 font-medium text-black dark:text-white">
-                       Date
-                    </th>
-                    <th class="px-4 py-4 font-medium text-black dark:text-white">
-                        Actions
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="niveauScolaire in props.niveauScolaires.data">
-                    <td
-                        class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
-                        <h5 class="font-medium text-black dark:text-white">{{ niveauScolaire.nom
-                            }}</h5>
-
-                    </td>
-                    <td
-                        class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
-                        <h5 class="font-medium text-black dark:text-white">
-                            {{ formatDate(niveauScolaire.created_at)
-                            }}</h5>
-
-                    </td>
-
-                    <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                        <div class="flex items-center space-x-3.5">
-                            <button class="hover:text-green-700 bg-green-500  p-1 rounded-md">
-                                <svg class="w-6 h-6 text-white dark:text-white"
-                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2"
-                                        d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28" />
-                                </svg>
-
-                            </button>
-                            <button class="hover:text-red-700 bg-red-500  p-1  rounded-md">
-                                <svg class="w-6 h-6 text-white dark:text-white"
-                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2"
-                                        d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
-                                </svg>
-
-                            </button>
-
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-
-                    <td colspan="3">
-                        <!-- <div>
-                            <Pagination :links="props.niveauScolaires.links" 
-                                :prev="props.niveauScolaires.prev_page_url"
-                                :next="props.niveauScolaires.next_page_url" />
-                        </div> -->
-                        <div>
-                            <AppPaginator
-                            :links="niveauScolaires.links"
-                            :from="niveauScolaires.from || 0"
-                            :to="niveauScolaires.to || 0"
-                            :total="niveauScolaires.total || 0"
-                            class="mt-4 justify-center"
-                            >
-
-                            </AppPaginator>
-                        </div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </AuthenticatedLayout>
-</template>
+<!-- resources/js/Pages/NiveauScolaire/EditeNiveauScolaire.vue -->
+ <!-- resources/js/Pages/NiveauScolaire/EditeNiveauScolaire.vue -->
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import AppPaginator from '@/Shared/AppPaginator.vue';
+import { ref } from 'vue';
+import { useForm } from '@inertiajs/vue3';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import Modal from '@/Components/Modal.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
-import { Head } from '@inertiajs/vue3';
-
+// On reçoit en props le niveau scolaire à éditer
 const props = defineProps({
-    niveauScolaires: {
-        type: Object,
-        required: true
-    }
-})
+  niveauScolaire: {
+    type: Object,
+    required: true
+  }
+});
 
-const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const options = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit',
-        weekday: 'long'
-    };
-    return date.toLocaleDateString('fr-FR', options);
-}
+// Initialisation du formulaire avec les données existantes
+const form = useForm({
+  nom: props.niveauScolaire.nom,
+});
+
+const confirmingEdit = ref(false);
+const nomInput = ref(null);
+
+const openModal = () => {
+  confirmingEdit.value = true;
+};
+
+const closeModal = () => {
+  confirmingEdit.value = false;
+  form.clearErrors();
+};
+
+const submitForm = () => {
+  form.put(route('niveauScolaire.update', props.niveauScolaire.id), {
+    preserveScroll: true,
+    onSuccess: () => closeModal(),
+    onError: () => nomInput.value.focus(),
+  });
+};
 </script>
+
+<template>
+  <section class="space-y-6">
+    <!-- Bouton pour ouvrir la modale d'édition -->
+    <PrimaryButton @click="openModal" class="bg-green-500">Editer</PrimaryButton>
+
+    <Modal :show="confirmingEdit" @close="closeModal">
+      <div class="p-6">
+        <div class="flex justify-between">
+          <h2>Editer Niveau Scolaire</h2>
+          <SecondaryButton @click="closeModal" class="bg-[#ffffff] border-0">
+            <span class="text-red-600 text-xl">X</span>
+          </SecondaryButton>
+        </div>
+        <form @submit.prevent="submitForm">
+          <div class="mt-6">
+            <InputLabel for="nom" value="Niveau Scolaire" class="flex"/>
+            <TextInput
+              id="nom"
+              type="text"
+              ref="nomInput"
+              class="mt-1 block w-full"
+              v-model="form.nom"
+              required
+              autofocus
+              placeholder="Niveau Scolaire"
+              autocomplete="none"
+            />
+            <InputError class="mt-2 flex" :message="form.errors.nom" />
+          </div>
+          <div class="mt-6 flex justify-end">
+            <SecondaryButton @click="closeModal" class="bg-[red] hover:bg-[#c53434] text-white">
+              Cancel
+            </SecondaryButton>
+            <PrimaryButton
+              class="ms-3"
+              :class="{ 'opacity-25': form.processing }"
+              :disabled="form.processing"
+              @click="submitForm"
+            >
+              Soumettre
+            </PrimaryButton>
+            <Transition
+              enter-active-class="transition ease-in-out"
+              enter-from-class="opacity-0"
+              leave-active-class="transition ease-in-out"
+              leave-to-class="opacity-0"
+            >
+              <p v-if="form.recentlySuccessful" class="text-sm text-green-600">
+                Saved.
+              </p>
+            </Transition>
+          </div>
+        </form>
+      </div>
+    </Modal>
+  </section>
+</template>

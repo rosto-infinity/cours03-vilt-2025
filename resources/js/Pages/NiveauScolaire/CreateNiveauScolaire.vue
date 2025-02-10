@@ -1,13 +1,13 @@
 
    <script setup>
-   import DangerButton from '@/Components/DangerButton.vue';
+//    resources/js/Pages/NiveauScolaire/CreateNiveauScolaire.vue
    import InputError from '@/Components/InputError.vue';
    import InputLabel from '@/Components/InputLabel.vue';
    import Modal from '@/Components/Modal.vue';
    import SecondaryButton from '@/Components/SecondaryButton.vue';
    import TextInput from '@/Components/TextInput.vue';
    import { useForm } from '@inertiajs/vue3';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+   import PrimaryButton from '@/Components/PrimaryButton.vue';
    import {  ref } from 'vue';
 
    const confirmingCreateNiveauScolaire = ref(false);
@@ -25,12 +25,6 @@ const submitForm = () => {
     form.post(route('niveauScolaire.store'), {
         preserveScroll: true,
         onSuccess: () => closeModal(),
-        // onError: () => {
-        //     if (form.errors.password) {
-        //         form.reset('nom');
-        //         nomInput.value.focus();
-        //     }
-        // },
         onError: () => nomInput.value.focus(),
         onFinish: () => form.reset(),
     });
@@ -90,6 +84,19 @@ const submitForm = () => {
                         >
                             Soumettre
                         </PrimaryButton>
+                        <Transition
+                    enter-active-class="transition ease-in-out"
+                    enter-from-class="opacity-0"
+                    leave-active-class="transition ease-in-out"
+                    leave-to-class="opacity-0"
+                >
+                    <p
+                        v-if="form.recentlySuccessful"
+                        class="text-sm text-green-600"
+                    >
+                        Saved.
+                    </p>
+                </Transition>
                      </div>
                 </form>
                    
