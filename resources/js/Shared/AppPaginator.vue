@@ -16,7 +16,7 @@
                     />
                     <Link 
                         v-else
-                        class="mb-1 mr-1 rounded border px-3 py-2 text-sm leading-4 hover:bg-skin-primary-10 hover:text-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                        class="mb-1 mr-1 rounded border px-3 py-2 text-sm leading-4 hover:bg-green-200 hover:text-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                         :class="{
                             'bg-green-600 text-white': link.active
                         }"

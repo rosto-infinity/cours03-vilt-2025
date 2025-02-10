@@ -38,12 +38,12 @@
                               </thead>
                               <tbody>
                                   <tr v-for="etudiant in props.etudiants.data" :key="etudiant" >
-                                      <td class="border-b border-[#050404] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
+                                      <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                           <h5 class="font-medium text-black dark:text-white">
                                             {{ etudiant.nom }} {{ etudiant.prenom }}
                                         </h5>
                                       </td>
-                                      <td class="border-b border-[#050404] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
+                                      <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                           <h5 class="font-medium text-black dark:text-white">
                                             {{ etudiant.niveau_scolaire.nom }} 
                                         </h5>
