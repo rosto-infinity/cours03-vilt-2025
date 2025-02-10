@@ -20,7 +20,8 @@ class NiveauScolaireController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(["nom" => "required"]);
+        // $request->validate(["nom" => "required|unique:NiveauScolaire"]);
+        $request->validate(["nom" => "required|unique:App\\Models\NiveauScolaire"]);
         
         NiveauScolaire::create(["nom" => $request->nom]);
 

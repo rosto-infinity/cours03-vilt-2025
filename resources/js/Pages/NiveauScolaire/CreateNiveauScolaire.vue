@@ -31,7 +31,7 @@ const submitForm = () => {
         //         nomInput.value.focus();
         //     }
         // },
-        onError: () => passwordInput.value.focus(),
+        onError: () => nomInput.value.focus(),
         onFinish: () => form.reset(),
     });
 };
@@ -73,7 +73,7 @@ const submitForm = () => {
                             autocomplete="none"
                         />
                             <!-- <h3>{{ form.nom }}</h3> -->
-                        <InputError class="mt-2" :message="form.errors.nom" />
+                        <InputError class="mt-2 flex" :message="form.errors.nom"  />
                        
                    </div>
         
