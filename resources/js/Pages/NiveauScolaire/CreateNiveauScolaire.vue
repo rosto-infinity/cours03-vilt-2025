@@ -71,7 +71,7 @@ const submitForm = () => {
                        
                    </div>
         
-                    <div class="mt-6 flex justify-end">
+                    <div class="mt-6 flex items-center justify-end">
                         <SecondaryButton @click="closeModal" class="bg-[red] hover:bg-[#c53434] text-white">
                             Cancel
                         </SecondaryButton>
