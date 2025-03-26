@@ -57,6 +57,7 @@
                                       <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                           <div class="flex items-center space-x-3.5">
                                               <EditEtudiant :etudiant="etudiant" />
+                                            
                                               <!-- Intégration du composant de suppression -->
                                               <DeleteEtudiant :etudiant="etudiant" />
                                           </div>
